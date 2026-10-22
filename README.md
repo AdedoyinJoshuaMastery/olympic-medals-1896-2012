@@ -1,6 +1,3 @@
-# README.md
-
-```markdown
 # 🏅 Summer Olympics Medalists Dataset (1896 – 2012)
 
 A comprehensive, clean, and analysis-ready dataset of every medal-winning athlete
@@ -12,11 +9,22 @@ athlete achievements, sport trends, and more.
 
 ---
 
+## 📁 Repository Structure
+
+```
+olympic-medals-1896-2012/
+├── README.md
+└── data/
+    └── summer.csv
+```
+
+---
+
 ## 📌 What's Inside
 
-The file `summer.csv` contains **one row per medal awarded** — meaning an athlete
-who wins two medals appears in two rows, and every medal in a team event is listed
-for each team member.
+The file `data/summer.csv` contains **one row per medal awarded** — meaning an
+athlete who wins two medals appears in two rows, and every medal in a team event
+is listed for each team member.
 
 - **Editions covered:** 1896 – 2012 (Summer Games only)
 - **Cities:** 27 host cities
@@ -43,6 +51,7 @@ for each team member.
 | `Medal`      | Text    | `Gold`, `Silver`, or `Bronze`                                    | `Gold`           |
 
 ### Notes on the data
+
 - **Country codes** are IOC codes (e.g. `URS` for Soviet Union, `GDR` for East
   Germany, `ZZX` for mixed teams, `EUA` for the Unified Team of Germany,
   `EUN` for the Unified Team, `ANZ` for Australasia).
@@ -71,20 +80,22 @@ for each team member.
 ## 🔌 Loading into Power BI
 
 ### Option 1 — Import the CSV directly
+
 1. Open **Power BI Desktop** → `Home` → **Get Data** → **Text/CSV**.
-2. Select `summer.csv`.
+2. Select `data/summer.csv`.
 3. In the preview window, verify:
    - **Delimiter:** Comma
    - **File Origin:** 65001: Unicode (UTF-8)
 4. Click **Transform Data** (recommended) or **Load**.
 
 ### Option 2 — Power Query (recommended cleanup steps)
+
 In the Power Query Editor, apply these steps:
 
 ```m
 let
     Source = Csv.Document(
-        File.Contents("summer.csv"),
+        File.Contents("data/summer.csv"),
         [Delimiter = ",", Columns = 9, Encoding = 65001, QuoteStyle = QuoteStyle.Csv]
     ),
     PromotedHeaders = Table.PromoteHeaders(Source, [PromoteAllScalars = true]),
@@ -104,6 +115,7 @@ in
 ```
 
 ### Optional recommended additions
+
 - **Split Athlete name** into `Surname` and `Firstname` using
   *Split Column → By Delimiter → Space → Left-most delimiter*.
 - Create a **Medal Color** measure for visuals:
@@ -130,6 +142,7 @@ Medal Count = COUNTROWS('summer')
   fact table for best performance.
 
 ### Modelling tips
+
 - Because the data is already flat and clean, a **single-table model** works
   fine for quick exploration; a **star schema** is better for larger dashboards.
 - Add a **Year → Date** table if you want time-intelligence functions.
@@ -183,46 +196,3 @@ records are especially welcome.
 
 Star the repo, and tag me when you build something with it on LinkedIn — I love
 seeing what people create!
-```
-
----
-
-## 🏷️ Suggested Repository Name
-
-**`olympic-medals-1896-2012`**
-
-Why this works:
-- **Clear and searchable** — instantly tells anyone what's inside.
-- **Includes the time range** — signals it's a historical dataset, not just modern Games.
-- **SEO-friendly on GitHub** — people searching "Olympic medals dataset" will find it.
-- **Professional** — good for a LinkedIn audience.
-
-### Alternatives (if you want a more branded/creative feel)
-
-| Name | Vibe |
-|------|------|
-| `olympic-glory-dataset` | Punchy, memorable |
-| `summer-olympics-medal-archive` | Archival, authoritative |
-| `olympic-medal-atlas` | Dashboard/analytics feel |
-| `gold-silver-bronze` | Short, distinctive, LinkedIn-friendly |
-
-**My top pick:** `olympic-medals-1896-2012` — it's the safest and most discoverable.
-
----
-
-## 📝 Suggested Repository Description
-
-> **Short (one-liner for GitHub "About" field):**
->
-> *Clean, analysis-ready dataset of every Summer Olympic medalist from 1896 to 2012 — built for Power BI dashboards and sports analytics.*
-
-**Longer version (for a LinkedIn post or repo intro):**
-
-> *A comprehensive dataset of all Summer Olympic medal winners from Athens 1896 to London 2012. Each row represents one athlete–medal pairing, covering 27 host cities, dozens of sports, and thousands of athletes. Perfect for Power BI dashboards, historical trend analysis, and medal-table storytelling. Download the CSV, fire up Power BI, and start exploring.*
-
----
-
-**GitHub "About" panel setup (recommended):**
-- **Description:** the short one-liner above
-- **Topics/tags:** `olympic-games`, `dataset`, `powerbi`, `sports-analytics`, `csv`, `data-visualization`, `history`
-- **Website (optional):** link to your LinkedIn post or portfolio piece using the data
