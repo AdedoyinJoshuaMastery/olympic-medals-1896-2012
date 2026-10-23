@@ -15,7 +15,15 @@ athlete achievements, sport trends, and more.
 olympic-medals-1896-2012/
 ├── README.md
 └── data/
-    └── summer.csv
+|    └── summer.csv
+│
+├── Reports/
+│   └── summer-olympics-analysis.pbix
+│
+└── DAX/
+    ├── SingleNation_Gender_Cleansweep_Gold.md
+    ├── Discipline_Monopolization_60pct.md
+    └── Explanation_of_Discipline_Monopolization.md
 ```
 
 ---
