@@ -284,11 +284,4 @@ This produces the final Year–Sport–Country cleansweep output (same logic as 
 
 ---
 
-## 11) Files in this Repo
-
-- Excel workbook: `Excel/SingleNation_Gender_Cleansweep_Gold.xlsx`
-- This documentation: `Excel/SingleNation_Gender_Cleansweep_Gold_Excel.md`
-- Power BI/DAX versions are available in the `DAX/` folder.
-- Full report is available in the `Reports/` folder.
-
 **MasterPiece Data Centre**
